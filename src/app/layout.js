@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -26,7 +27,11 @@ export default function RootLayout({ children }) {
         {/* Navbar */}
         <Header/>
         <Marquee/>
+        <main>
         {children}
+        </main>
+        <Toaster/>
+
         {/* Footer */}
         <Footer/>
         </body>

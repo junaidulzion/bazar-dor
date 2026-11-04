@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -9,25 +10,38 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function SignInPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
-    alert(`Login submitted: ${JSON.stringify(data, null, 2)}`);
+    // alert(`Login submitted: ${JSON.stringify(data, null, 2)}`);
+    const { data: resData, error } = await signIn.email({
+      email: data.email,
+      password: data.password, 
+      callbackURL: "/",
+    });  
+    if (error){
+      toast.error(error.message)
+    }
   };
+   const handleGoogleSignIn= async () =>{
+      const data = await signIn.social({
+      provider: "google",
+    });
+    console.log(data);
+    };
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f0f5f0] px-4 py-10 text-[#26332b]">
       <div className="w-full max-w-[450px]">
         {/* Heading */}
         <div className="mb-5 text-center">
-          <h1 className="text-2xl font-bold tracking-tight">
-            সাইন ইন
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight">সাইন ইন</h1>
           <p className="mt-1 text-sm text-gray-500">
             বিস্তারিত দাম, বাজার তুলনা ও ট্র্যাকিং দেখতে অ্যাকাউন্টে ঢুকুন।
           </p>
@@ -98,33 +112,34 @@ export default function SignInPage() {
           </div>
 
           {/* Social login */}
-          <div className="grid w-full grid-cols-2 gap-3">
+          <div className="text-center gap-3">
             <Button
               type="button"
+              onClick={handleGoogleSignIn}
+              variant="secondary"
               className="h-10 rounded-lg border border-[#dfe7df] bg-white text-xs font-medium"
-              onPress={() => alert("Google login")}
+              // onPress={() => alert("Google signup")}
             >
-              <span className="text-base font-bold text-[#4285F4]">
-                G
-              </span>
-              Google দিয়ে চালিয়ে যান
+              <span className="text-base font-bold text-[#f39405]">G</span>
+              <p className="text-black">Google দিয়ে চালিয়ে যান</p>
             </Button>
 
-            <Button
-              type="button"
-              className="h-10 rounded-lg border border-[#dfe7df] bg-white text-xs font-medium"
-              onPress={() => alert("GitHub login")}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="currentColor"
-                aria-hidden="true"
+            {/* <Button
+                type="button"
+                variant="outline"
+                className="h-10 rounded-lg border border-[#dfe7df] bg-white text-xs font-medium"
+                onPress={() => alert("GitHub login")}
               >
-                <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.74 2.04 3.2 1.43.1-.72.4-1.2.72-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.12-2.96 0 0 .95-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.1-1.44 3.05-1.14 3.05-1.14.62 1.54.24 2.68.12 2.96.72.78 1.16 1.78 1.16 3 0 4.3-2.62 5.24-5.12 5.52.4.34.76 1 .76 2.02v3c0 .3.2.65.76.54A11.1 11.1 0 0 0 12 .9Z" />
-              </svg>
-              GitHub দিয়ে চালিয়ে যান
-            </Button>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.74 2.04 3.2 1.43.1-.72.4-1.2.72-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.12-2.96 0 0 .95-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.1-1.44 3.05-1.14 3.05-1.14.62 1.54.24 2.68.12 2.96.72.78 1.16 1.78 1.16 3 0 4.3-2.62 5.24-5.12 5.52.4.34.76 1 .76 2.02v3c0 .3.2.65.76.54A11.1 11.1 0 0 0 12 .9Z" />
+                </svg>
+                GitHub দিয়ে চালিয়ে যান
+              </Button> */}
           </div>
 
           {/* Signup link */}
