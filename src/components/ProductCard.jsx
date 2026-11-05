@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ product }) => {
@@ -7,6 +8,7 @@ const ProductCard = ({ product }) => {
   const unit = product?.unit === "kg" ? "কেজি" : product?.unit || "একক";
 
   return (
+    <Link href={`/product/${product?.id}`}>
     <div className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg sm:rounded-2xl sm:p-4 lg:p-5">
       {/* Product Info */}
       <div className="flex min-w-0 items-start gap-3">
@@ -64,6 +66,7 @@ const ProductCard = ({ product }) => {
       {/* Hover Accent */}
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-green-500 transition-all duration-300 group-hover:w-full" />
     </div>
+    </Link>
   );
 };
 

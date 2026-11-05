@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
