@@ -70,6 +70,8 @@ export default function ProfileClient({ user }) {
                   src={user.image}
                   alt={user.name || "Profile"}
                   className="size-full object-cover"
+                  height={48}
+                  width={48}
                 />
               ) : (
                 <span className="text-lg font-bold">
