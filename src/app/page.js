@@ -1,3 +1,4 @@
+import AllProductsSection from "@/components/AllProductsSection";
 import HeroSection from "@/components/homePage/HeroSection";
 import ProductCard from "@/components/ProductCard";
 

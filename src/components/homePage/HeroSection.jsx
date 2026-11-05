@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-amber-50">
       <div className="container mx-auto px-2 py-12 sm:px-6 sm:py-16 lg:px-8 lg:pt-8 lg:pb-24">
-        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-8 lg:gap-16">
+        <div className="grid bg-white items-center gap-8 md:grid-cols-2 md:gap-8 lg:gap-16">
           {/* Left Content */}
           <div className="order-2 space-y-2 text-center md:order-1 md:text-left">
             {/* Date */}
@@ -37,21 +37,21 @@ const HeroSection = () => {
             {/* Button */}
             <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center md:justify-start">
               <Link
-                href="/products"
+                href="/AllProductsSection"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-green-600/20 transition duration-300 hover:-translate-y-1 hover:bg-green-700 sm:w-auto"
               >
                 সব পণ্য দেখুন
                 <span aria-hidden="true">→</span>
               </Link>
 
-              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white/80 px-5 py-3.5 text-sm font-medium text-gray-700">
+              {/* <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white/80 px-5 py-3.5 text-sm font-medium text-gray-700">
                 <span className="text-lg">৳</span>
                 প্রতিদিনের বাজারদর
-              </div>
+              </div> */}
             </div>
 
             {/* Small Highlights */}
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 pt-4 text-sm text-gray-600 md:justify-start">
+            {/* <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 pt-4 text-sm text-gray-600 md:justify-start">
               <span className="flex items-center gap-2">
                 <span className="text-green-600">✓</span>
                 বিভিন্ন পণ্যের দাম
@@ -60,17 +60,17 @@ const HeroSection = () => {
                 <span className="text-green-600">✓</span>
                 সহজে দাম তুলনা
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Image */}
-          <div className="order-1 flex justify-center md:order-2">
-            <div className="relative w-full max-w-md lg:max-w-xl">
+          <div className="order-1  flex justify-center md:order-2">
+            <div className="relative max-w-md lg:max-w-xl">
               {/* Decorative Background */}
               <div className="absolute -inset-4 rounded-[2rem] bg-green-200/40 blur-2xl"></div>
 
               {/* Image Container */}
-              <div className="relative overflow-hidden rounded-3xl border border-white bg-white p-3 shadow-2xl shadow-green-900/10 sm:p-4">
+              <div className="relative overflow-hidden rounded-3xl border border-white p-2 shadow-2xl shadow-green-900/10 sm:p-4">
                 <Image
                   src={HeroImage}
                   alt="বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজার"
